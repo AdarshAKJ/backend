@@ -23,7 +23,7 @@ app.use(
     })
 );
 
-// create
+// Create Account
 app.post("/create-account", async (req, res) => {
     const { fullName, email, password } = req.body;
 
@@ -77,6 +77,27 @@ app.post("/create-account", async (req, res) => {
 
 });
 
+// Get User 
+app.get("/get-user", authenticateToken, async (req, res) => {
+    const { user } = req.user;
+
+    const isUser = await User.findOne({ _id: user._id });
+
+    if (!isUser) {
+        return res.sendStatus(401);
+    }
+
+    const userResponse = isUser.toObject();
+
+    delete userResponse.password;
+    delete userResponse.createdOn;
+
+    return res.json({
+        user: userResponse,
+        message: ""
+    });
+
+});
 
 //login
 app.post("/login", async (req, res) => {
