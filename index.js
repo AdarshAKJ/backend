@@ -125,7 +125,7 @@ app.post("/login", async (req, res) => {
             .json({ message: "Either user or password is wrong" });
     }
 
-    if (password !== isUser.password) {
+    if (password.toString() !== isUser.password.toString()) {
         return res
             .status(400)
             .json({
