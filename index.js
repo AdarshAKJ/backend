@@ -85,7 +85,7 @@ app.get("/api/gif/:id", async (req, res) => {
 
         gif = await GIFs.findById(req.params.id);
         // console.log("update");
-        gif.rank = gif.rank + 1 / 2;
+        gif.rank = gif.rank + 1;
 
         await gif.save();
 
