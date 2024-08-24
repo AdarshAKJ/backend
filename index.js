@@ -23,6 +23,18 @@ app.get("/", (req, res) => {
 });
 
 
+// app.get("/api/rankEqul0", async (req, res) => {
+//     try {
+//         const result = await GIFs.updateMany({}, { $set: { rank: 0 } });
+//         res.status(200).json({
+//             message: 'All ranks have been reset to 0',
+//             result
+//         });
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }
+// })
 
 // search notes
 app.post("/api/create-gif", async (req, res) => {
